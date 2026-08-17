@@ -8,12 +8,14 @@ export function isAuthConfigured() {
   return Boolean(supabaseUrl && supabasePublishableKey);
 }
 
-function authHeaders(accessToken = supabasePublishableKey) {
-  return {
+function authHeaders(accessToken) {
+  const headers = {
     apikey: supabasePublishableKey,
-    Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'application/json'
   };
+
+  if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
+  return headers;
 }
 
 async function parseResponse(response) {
