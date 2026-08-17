@@ -18,7 +18,7 @@ The Sign in and Create account interface is connected to Supabase Auth through t
 
 ```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-public-anon-key
+VITE_SUPABASE_PUBLISHABLE_KEY=your-public-publishable-key
 ```
 
 Place real values in `.env.local`. Never place a Supabase service-role key in this frontend or commit `.env.local` to GitHub.
