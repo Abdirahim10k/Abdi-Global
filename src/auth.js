@@ -1,14 +1,16 @@
 const supabaseUrl = (import.meta.env.VITE_SUPABASE_URL || '').replace(/\/$/, '');
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+  || import.meta.env.VITE_SUPABASE_ANON_KEY
+  || '';
 const sessionKey = 'abdiglobal.auth.session';
 
 export function isAuthConfigured() {
-  return Boolean(supabaseUrl && supabaseAnonKey);
+  return Boolean(supabaseUrl && supabasePublishableKey);
 }
 
-function authHeaders(accessToken = supabaseAnonKey) {
+function authHeaders(accessToken = supabasePublishableKey) {
   return {
-    apikey: supabaseAnonKey,
+    apikey: supabasePublishableKey,
     Authorization: `Bearer ${accessToken}`,
     'Content-Type': 'application/json'
   };
